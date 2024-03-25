@@ -75,7 +75,7 @@ app.post('/register', (req, res) => {
     const { name, password } = req.body;
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
-
+    console.log(req.body);
     db('users')
         .returning('*')
         .insert({
