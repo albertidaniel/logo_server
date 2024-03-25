@@ -105,7 +105,7 @@ app.get('/profile/:id', (req, res) => {
 */
 
 app.post('/', (req, res) => {
-    res.json('its working');
+    res.send('its working');
 })
 
 app.post('/solved', (req, res) => {
