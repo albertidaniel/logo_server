@@ -104,6 +104,10 @@ app.get('/profile/:id', (req, res) => {
 })
 */
 
+app.post('./', (req, res) => {
+    res.json('its working');
+})
+
 app.post('/solved', (req, res) => {
     const { userId } = req.body;
     db.select('*').from('solvedlogos').where('user_id', '=', userId)
