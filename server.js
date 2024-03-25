@@ -60,6 +60,7 @@ app.post('/signin', (req, res) => {
         .from('users')
         .where('name', '=', req.body.name)
         .then(user => {
+            console.log(user);
             found = true;
             if (bcrypt.compareSync(req.body.password, user[0].password)) {
                 return db.select('*')
