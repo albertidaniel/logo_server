@@ -69,10 +69,11 @@ app.post('/signin', (req, res) => {
                     .then(data => res.json(data[0]))
                     .catch(err => res.status(400).json('error login in'));
             } else {
-                res.json('wrong password');
+                return res.json('wrong password');
             }
         })
         .catch(err => res.json(err));
+    return res.json('user not found');
 
 })
 
