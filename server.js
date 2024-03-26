@@ -56,7 +56,7 @@ const database = {
 }
 
 app.post('/signin', (req, res) => {
-    console.log('entro al signin');
+    //console.log('entro al signin');
     db.select('*')
         .from('users')
         .where('name', '=', req.body.name)
