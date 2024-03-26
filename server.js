@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const knex = require('knex');
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 let db = knex({
     client: 'pg',
@@ -12,7 +12,7 @@ let db = knex({
         connectionString: process.env.DATABASE_URL,
         ssl: {
             rejectUnauthorized: false
-          }
+        }
     }
 });
 
@@ -26,11 +26,11 @@ app.use(cors());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
     );
     next();
-  });
+});
 
 const database = {
     users: [
@@ -65,24 +65,24 @@ const database = {
 }
 
 app.post('/signin', (req, res) => {
-    //console.log('entro al signin');
-    //let found = false;
+    let found = false;
     db.select('*')
         .from('users')
         .where('name', '=', req.body.name)
         .then(user => {
-            console.log(user);
+
             found = true;
             if (bcrypt.compareSync(req.body.password, user[0].password)) {
-                console.log('usuario encontrado');
                 return res.json(user[0]);
             } else {
                 return res.json('wrong password');
             }
         })
-        .catch(err => res.json(err));
-    //return res.json('user not found');
-
+        .catch(err => {
+            found = true;
+            res.json(err)
+        });
+    if (!found) return res.json('user not found');
 })
 
 app.post('/register', (req, res) => {
