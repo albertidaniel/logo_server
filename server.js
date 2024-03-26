@@ -74,6 +74,7 @@ app.post('/signin', (req, res) => {
             console.log(user);
             found = true;
             if (bcrypt.compareSync(req.body.password, user[0].password)) {
+                console.log('usuario encontrado');
                 return db.select('*')
                     .from('users')
                     .where('name', '=', req.body.name)
