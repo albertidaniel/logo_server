@@ -66,6 +66,7 @@ const database = {
 
 app.post('/signin', (req, res) => {
     //console.log('entro al signin');
+    //let found = false;
     db.select('*')
         .from('users')
         .where('name', '=', req.body.name)
@@ -83,7 +84,7 @@ app.post('/signin', (req, res) => {
             }
         })
         .catch(err => res.json(err));
-    return res.json('user not found');
+    //return res.json('user not found');
 
 })
 
