@@ -75,11 +75,7 @@ app.post('/signin', (req, res) => {
             found = true;
             if (bcrypt.compareSync(req.body.password, user[0].password)) {
                 console.log('usuario encontrado');
-                return db.select('*')
-                    .from('users')
-                    .where('name', '=', req.body.name)
-                    .then(data => res.json(user[0]))
-                    .catch(err => res.status(400).json('error login in'));
+                return res.json(user[0]);
             } else {
                 return res.json('wrong password');
             }
