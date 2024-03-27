@@ -32,38 +32,6 @@ app.use((req, res, next) => {
     next();
 });
 
-const database = {
-    users: [
-        {
-            id: '1',
-            name: 'daniel',
-            password: '123',
-            points: 200,
-            joined: new Date(),
-            solved: []
-        },
-        {
-            id: '2',
-            name: 'marie',
-            password: '21',
-            points: 200,
-            joined: new Date(),
-            solved: [
-                {
-                    logoId: '1',
-                    hintIsOpen: 'true',
-                    logoIsSolved: 'false'
-                },
-                {
-                    logoId: '2',
-                    hintIsOpen: 'true',
-                    logoIsSolved: 'false'
-                }
-            ]
-        }
-    ]
-}
-
 app.post('/signin', (req, res) => {
     let found = false;
     db.select('*')
