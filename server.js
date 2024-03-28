@@ -48,9 +48,9 @@ app.post('/signin', (req, res) => {
         })
         .catch(err => {
             found = true;
-            res.json(err)
+            return res.json(err)
         });
-    //if (!found) return res.json('user not found');
+    if (!found) return res.json('user not found');
 })
 
 app.post('/register', (req, res) => {
