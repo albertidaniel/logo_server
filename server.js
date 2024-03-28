@@ -50,7 +50,7 @@ app.post('/signin', (req, res) => {
             found = true;
             return res.json(err)
         });
-    if (!found) return res.json('user not found');
+    //if (!found) return res.json('user not found');
 })
 
 app.post('/register', (req, res) => {
