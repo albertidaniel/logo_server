@@ -57,6 +57,7 @@ app.post('/register', (req, res) => {
     const { name, password } = req.body;
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
+    console.log('entro al register');
     if (password.length === 0) return res.json('invalid password');
     db('users')
         .returning('*')
