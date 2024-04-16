@@ -68,19 +68,6 @@ app.post("/register", (req, res) => {
     .catch((err) => res.status(400).json(err.detail));
 });
 
-/*
-app.get('/profile/:id', (req, res) => {
-    const { id } = req.params;
-    let found = false;
-    database.users.forEach((user) => {
-        if (user.id === id) {
-            res.json(user);
-            found = true;
-        }
-    })
-    if (!found) res.json('user not found');
-})
-*/
 
 app.get("/", (req, res) => {
   res.send("its working");
